@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    }
+]

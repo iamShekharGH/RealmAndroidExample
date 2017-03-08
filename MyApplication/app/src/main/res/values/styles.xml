@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.TextView" parent="AppTheme">
+        <item name="android:textSize">21sp</item>
+        <!--<item name="android:gravity">center</item>-->
+        <item name="android:layout_margin">4dp</item>
+        <!--<item name="android:background">#ffffff</item>-->
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">#606060</item>
+    </style>
+
 </resources>

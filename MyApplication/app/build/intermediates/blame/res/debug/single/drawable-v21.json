@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/res/drawable-v21/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/res/drawable-v21/avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/res/drawable-v21/avd_hide_password.xml"
+    }
+]
