@@ -1,29 +1,21 @@
 package com.iamshekhargh.realmexample;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
-import com.iamshekhargh.realmexample.Models.Person;
+import com.iamshekhargh.realmexample.Fragments.FragmentAddDetails;
+import com.iamshekhargh.realmexample.Fragments.Fragment_mainActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
-
-    @BindView(R.id.recyclerview)
-    RecyclerView recyclerview;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
-    List<Person> persons;
-
-
-    PersonAdapter adapter;
+public class MainActivity extends AppCompatActivity implements
+        FragmentAddDetails.OnFragmentInteractionListener,
+        Fragment_mainActivity.OnFragmentInteractionListener {
+    //Defining it here to refresh views when data changes.
+    Fragment_mainActivity fragment_mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,36 +23,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        generateRandomData();
-
-        recyclerview.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PersonAdapter(persons);
-        recyclerview.setAdapter(adapter);
-
+        fragment_mainActivity = Fragment_mainActivity.newInstance();
 
     }
 
-    private void generateRandomData() {
-        persons = new ArrayList<>();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        addFragment(fragment_mainActivity);
+    }
 
-        boolean temp = true;
+    @Override
+    public void addFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
-        for (int i = 0; i < 5; i++) {
-            Person person = new Person();
-            person.setName("" + i);
-            person.setAge(i);
-            person.setEmail("Email No . " + i);
-            person.setMobNo(i * 100000 - 1);
-            person.setDob("0" + i + "st Jan 2017");
-            if (temp) {
-                person.setGender(temp);
-                temp = false;
-            } else {
-                person.setGender(temp);
-                temp = true;
-            }
-            persons.add(person);
-        }
-
+    @Override
+    public void refreshViews() {
+        fragment_mainActivity.refreshViews();
     }
 }

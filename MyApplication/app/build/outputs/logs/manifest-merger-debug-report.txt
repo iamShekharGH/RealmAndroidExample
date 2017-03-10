@@ -21,12 +21,12 @@ MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/iamShekharGH/.andro
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/iamShekharGH/.android/build-cache/6c24a0e1483f9fd1706ed2057a0f212707021e0b/output/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/iamShekharGH/.android/build-cache/407981814b3206d68e80a4242fabd7ce7b23b3cc/output/AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:transition:25.2.0] /Users/iamShekharGH/.android/build-cache/4c0bd01bba6ba81b60cee399a82f8a73506327c3/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.2.0] /Users/iamShekharGH/.android/build-cache/f747c4ee45e7766ac7016bba486312ac5c606c00/output/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:25.2.0] /Users/iamShekharGH/.android/build-cache/4a5042dacd452a300d68f39ddc9aa890a891593d/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.2.0] /Users/iamShekharGH/.android/build-cache/875c76d28defef04bf367b94784ea5b707de929d/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.2.0] /Users/iamShekharGH/.android/build-cache/cf7fc9d0efd1a4ce05cdbdc46cfc17e59aa5fcc8/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.2.0] /Users/iamShekharGH/.android/build-cache/5026d6aaec49803e5993f08561fe1b9c9479f05e/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:cardview-v7:25.2.0] /Users/iamShekharGH/.android/build-cache/f747c4ee45e7766ac7016bba486312ac5c606c00/output/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-core-ui:25.2.0] /Users/iamShekharGH/.android/build-cache/c20164df85d6cbd6aa892e762e49041db4e38c59/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/iamShekharGH/.android/build-cache/5026d6aaec49803e5993f08561fe1b9c9479f05e/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.2.0] /Users/iamShekharGH/.android/build-cache/2fd57c6940635da6589e6d38d79526e5a171a90f/output/AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from /Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml:9:9-41
@@ -68,14 +68,14 @@ MERGED from [com.android.support:appcompat-v7:25.2.0] /Users/iamShekharGH/.andro
 MERGED from [com.android.support:animated-vector-drawable:25.2.0] /Users/iamShekharGH/.android/build-cache/6c24a0e1483f9fd1706ed2057a0f212707021e0b/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.2.0] /Users/iamShekharGH/.android/build-cache/407981814b3206d68e80a4242fabd7ce7b23b3cc/output/AndroidManifest.xml:21:5-43
 MERGED from [com.android.support:transition:25.2.0] /Users/iamShekharGH/.android/build-cache/4c0bd01bba6ba81b60cee399a82f8a73506327c3/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.2.0] /Users/iamShekharGH/.android/build-cache/4a5042dacd452a300d68f39ddc9aa890a891593d/output/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.2.0] /Users/iamShekharGH/.android/build-cache/875c76d28defef04bf367b94784ea5b707de929d/output/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.2.0] /Users/iamShekharGH/.android/build-cache/cf7fc9d0efd1a4ce05cdbdc46cfc17e59aa5fcc8/output/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.2.0] /Users/iamShekharGH/.android/build-cache/5026d6aaec49803e5993f08561fe1b9c9479f05e/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.jakewharton:butterknife:8.5.1] /Users/iamShekharGH/.android/build-cache/c73b94d19aa56b5960003c89afaec857abff897f/output/AndroidManifest.xml:5:5-43
 MERGED from [com.android.support:cardview-v7:25.2.0] /Users/iamShekharGH/.android/build-cache/f747c4ee45e7766ac7016bba486312ac5c606c00/output/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:recyclerview-v7:25.2.0] /Users/iamShekharGH/.android/build-cache/06ecb948fb78dde9791fb77c6ccf9a254188369f/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:25.2.0] /Users/iamShekharGH/.android/build-cache/4a5042dacd452a300d68f39ddc9aa890a891593d/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] /Users/iamShekharGH/.android/build-cache/875c76d28defef04bf367b94784ea5b707de929d/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] /Users/iamShekharGH/.android/build-cache/cf7fc9d0efd1a4ce05cdbdc46cfc17e59aa5fcc8/output/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.2.0] /Users/iamShekharGH/.android/build-cache/c20164df85d6cbd6aa892e762e49041db4e38c59/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.2.0] /Users/iamShekharGH/.android/build-cache/5026d6aaec49803e5993f08561fe1b9c9479f05e/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.2.0] /Users/iamShekharGH/.android/build-cache/2fd57c6940635da6589e6d38d79526e5a171a90f/output/AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.2.0] /Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/AndroidManifest.xml:23:9-59

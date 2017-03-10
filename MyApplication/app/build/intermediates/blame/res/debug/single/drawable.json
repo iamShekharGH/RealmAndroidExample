@@ -68,12 +68,12 @@
         "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable/abc_tab_indicator_material.xml"
     },
     {
-        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
-        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable/abc_seekbar_tick_mark_material.xml"
-    },
-    {
         "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
         "source": "/Users/iamShekharGH/.android/build-cache/34fbb2b46ff4f72508a0a034f9af8c9245e331aa/output/res/drawable/navigation_empty_icon.xml"
+    },
+    {
+        "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
+        "source": "/Users/iamShekharGH/.android/build-cache/b8531237151afbe9b682cfb3ab726600ce379f97/output/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "/Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",

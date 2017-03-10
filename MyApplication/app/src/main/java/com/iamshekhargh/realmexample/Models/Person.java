@@ -2,6 +2,8 @@ package com.iamshekhargh.realmexample.Models;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by <<-- iamShekharGH -->>
@@ -10,16 +12,28 @@ import io.realm.RealmObject;
 
 public class Person extends RealmObject {
 
+
+    @PrimaryKey
+    String id;
+
     String name;
     Integer age;
     boolean gender;
     String email;
     String imageURL;
-    Integer mobNo;
+    String mobNo;
     String dob;
-    RealmList<Companey> companeys;
+    RealmList<Company> companies;
     RealmList<SocialNetwork> socialNetworks;
     RealmList<Movies> favMovies;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -61,11 +75,11 @@ public class Person extends RealmObject {
         this.imageURL = imageURL;
     }
 
-    public Integer getMobNo() {
+    public String getMobNo() {
         return mobNo;
     }
 
-    public void setMobNo(Integer mobNo) {
+    public void setMobNo(String mobNo) {
         this.mobNo = mobNo;
     }
 
@@ -77,12 +91,15 @@ public class Person extends RealmObject {
         this.dob = dob;
     }
 
-    public RealmList<Companey> getCompaneys() {
-        return companeys;
+    public RealmList<Company> getCompanies() {
+        return companies;
     }
 
-    public void setCompaneys(RealmList<Companey> companeys) {
-        this.companeys = companeys;
+    public void setCompanies(RealmList<Company> companies) {
+        if (companies == null || companies.size() == 0) {
+            this.companies = new RealmList<>();
+        } else
+            this.companies = companies;
     }
 
     public RealmList<SocialNetwork> getSocialNetworks() {
@@ -90,7 +107,10 @@ public class Person extends RealmObject {
     }
 
     public void setSocialNetworks(RealmList<SocialNetwork> socialNetworks) {
-        this.socialNetworks = socialNetworks;
+        if (socialNetworks == null || socialNetworks.size() == 0) {
+            this.socialNetworks = new RealmList<>();
+        } else
+            this.socialNetworks = socialNetworks;
     }
 
     public RealmList<Movies> getFavMovies() {
@@ -98,6 +118,9 @@ public class Person extends RealmObject {
     }
 
     public void setFavMovies(RealmList<Movies> favMovies) {
-        this.favMovies = favMovies;
+        if (favMovies == null || favMovies.size() == 0) {
+            this.favMovies = new RealmList<>();
+        } else
+            this.favMovies = favMovies;
     }
 }
