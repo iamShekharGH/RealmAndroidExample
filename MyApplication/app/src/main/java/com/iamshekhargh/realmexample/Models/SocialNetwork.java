@@ -1,7 +1,5 @@
 package com.iamshekhargh.realmexample.Models;
 
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -13,6 +11,19 @@ import io.realm.RealmObject;
 public class SocialNetwork extends RealmObject {
     String Name;
     String url;
+    RealmList<RealmString> feeds;
+    boolean relationshipStatus;
+    String imageUrl;
+
+    public String getRelationshipStatusString() {
+        return relationshipStatusString;
+    }
+
+    public void setRelationshipStatusString(String relationshipStatusString) {
+        this.relationshipStatusString = relationshipStatusString;
+    }
+
+    String relationshipStatusString;
 
     public String getName() {
         return Name;
@@ -54,8 +65,5 @@ public class SocialNetwork extends RealmObject {
         this.imageUrl = imageUrl;
     }
 
-    RealmList<RealmString> feeds;
-    boolean relationshipStatus;
-    String imageUrl;
 
 }

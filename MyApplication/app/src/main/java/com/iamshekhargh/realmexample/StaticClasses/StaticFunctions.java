@@ -3,6 +3,7 @@ package com.iamshekhargh.realmexample.StaticClasses;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 
 /**
  * Created by <<-- iamShekharGH -->>
@@ -10,6 +11,8 @@ import android.support.v7.app.AlertDialog;
  */
 
 public class StaticFunctions {
+
+    static boolean showLog = true;
 
     public static void alerDialog(Context context, String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -34,6 +37,13 @@ public class StaticFunctions {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+
+    public static void logDotI(String tag, String message) {
+        if (showLog) {
+            Log.i(tag, message);
+        }
+
     }
 
 }

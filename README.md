@@ -62,8 +62,25 @@ realm.commitTransaction();
 Thats it. you removed the field from the table;
 
 
+Step VI
+
+Reading and updating are fairly simple , 
+all you have to do is get the reference by using the id and begin and commit transsaction .
+
+realm.beginTransaction();
+ModelObject m = realm.where(ModelObject.class).findFirst();
+m.setInformation();
+//.. do the changes 
+
+realm.commitTransaction();
+
+reading is also the same 
+List<ModelObject> list = realm.where(ModelObject.class).findAll();
 
 
+Few things to keep in mind
+
+- you cannot store lists of the basic objects (String). you will have to create custom RealmSting or better named object which extends RealmObject adn then use it.
 
 
 

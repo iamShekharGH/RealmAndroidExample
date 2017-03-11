@@ -5,14 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
@@ -20,7 +21,6 @@ import android.widget.ToggleButton;
 import com.iamshekhargh.realmexample.Models.Company;
 import com.iamshekhargh.realmexample.Models.Movies;
 import com.iamshekhargh.realmexample.Models.Person;
-import com.iamshekhargh.realmexample.Models.RealmString;
 import com.iamshekhargh.realmexample.Models.SocialNetwork;
 import com.iamshekhargh.realmexample.R;
 
@@ -36,6 +36,9 @@ import io.realm.RealmList;
 
 
 public class FragmentAddDetails extends Fragment {
+
+    private static final String TAG = "FragmentAddDetails";
+
     @BindView(R.id.addDetails_age)
     EditText addDetailsAge;
     @BindView(R.id.addDetails_Name)
@@ -59,45 +62,71 @@ public class FragmentAddDetails extends Fragment {
     @BindView(R.id.addDetails_llayout_sNworks)
     LinearLayout addDetailsLlayoutSNworks;
     @BindView(R.id.addDetails_llayout_Movies)
-    LinearLayout linearLayout;
-    @BindView(R.id.company_name)
-    EditText companyName;
-    @BindView(R.id.company_title)
-    EditText companyTitle;
-    @BindView(R.id.company_startDate)
-    EditText companyStartDate;
-    @BindView(R.id.company_endDate)
-    EditText companyEndDate;
-    @BindView(R.id.company_salary)
-    EditText companySalary;
-    @BindView(R.id.sN_fullName)
-    EditText sNFullName;
-    @BindView(R.id.sN_socialLinks)
-    EditText sNSocialLinks;
-    @BindView(R.id.sN_rstatus_spinner)
-    Spinner sNRstatusSpinner;
-    @BindView(R.id.sN_image_url)
-    EditText sNImageUrl;
-    @BindView(R.id.sN_feedLayout)
-    LinearLayout sNFeedLayout;
-    @BindView(R.id.socialnetwork_card_layout)
-    ConstraintLayout socialnetworkCardLayout;
-    @BindView(R.id.movie_name)
-    EditText movieName;
-    @BindView(R.id.movie_releaseYear)
-    EditText movieReleaseYear;
-    @BindView(R.id.movie_productionHouse)
-    EditText movieProductionHouse;
-    @BindView(R.id.movie_directorName)
-    EditText movieDirectorName;
-    @BindView(R.id.movie_actor1)
-    EditText movieActor1;
-    @BindView(R.id.movie_actor2)
-    EditText movieActor2;
+    LinearLayout addDetailsLlayoutMovies;
 
+//
+//    @BindView(R.id.company_name)
+//    EditText companyName;
+//    @BindView(R.id.company_title)
+//    EditText companyTitle;
+//    @BindView(R.id.company_startDate)
+//    EditText companyStartDate;
+//    @BindView(R.id.company_endDate)
+//    EditText companyEndDate;
+//    @BindView(R.id.company_salary)
+//    EditText companySalary;
+//    @BindView(R.id.sN_fullName)
+//    EditText sNFullName;
+//    @BindView(R.id.sN_socialLinks)
+//    EditText sNSocialLinks;
+//    @BindView(R.id.sN_rstatus_spinner)
+//    Spinner sNRstatusSpinner;
+//    @BindView(R.id.sN_image_url)
+//    EditText sNImageUrl;
+//    @BindView(R.id.sN_feedLayout)
+//    LinearLayout sNFeedLayout;
+//    @BindView(R.id.socialnetwork_card_layout)
+//    ConstraintLayout socialnetworkCardLayout;
+//    @BindView(R.id.movie_name)
+//    EditText movieName;
+//    @BindView(R.id.movie_releaseYear)
+//    EditText movieReleaseYear;
+//    @BindView(R.id.movie_productionHouse)
+//    EditText movieProductionHouse;
+//    @BindView(R.id.movie_directorName)
+//    EditText movieDirectorName;
+//    @BindView(R.id.movie_actor1)
+//    EditText movieActor1;
+//    @BindView(R.id.movie_actor2)
+//    EditText movieActor2;
+
+
+    @BindView(R.id.addDetails_addCompaney)
+    ImageView addDetailsAddCompaney;
+    @BindView(R.id.addDetails_addSocialNetwork)
+    ImageView addDetailsAddSocialNetwork;
+    @BindView(R.id.addDetails_addMovie)
+    ImageView addDetailsAddMovie;
+
+
+    private OnFragmentInteractionListener mListener;
     Realm realm;
     Person realmPersonObject;
-    private OnFragmentInteractionListener mListener;
+    RealmList<Company> companyRealmList = new RealmList<>();
+    RealmList<SocialNetwork> socialNetworks = new RealmList<>();
+    RealmList<Movies> moviesRealmList = new RealmList<>();
+
+    List<View> companeyViewList = new ArrayList<>();
+    List<View> socialViewNList = new ArrayList<>();
+    List<View> movieViewList = new ArrayList<>();
+
+    String id;
+
+    private enum listType {
+        COMPANEY,
+        SOCIALN,
+        MOVIE
+    }
 
     public FragmentAddDetails() {
         // Required empty public constructor
@@ -123,7 +152,7 @@ public class FragmentAddDetails extends Fragment {
 
         addCustomViews();
 
-        initialiseValues();
+        setupElements();
 
         addDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,9 +165,68 @@ public class FragmentAddDetails extends Fragment {
                 popFragment();
             }
         });
+
+        initialiseValues();
     }
 
     private void initialiseValues() {
+        if (mListener.getPerson() != null) {
+            Person person = mListener.getPerson();
+
+            id = person.getId();
+
+            injectText(addDetailsName, person.getName());
+            injectText(addDetailsAge, person.getAge() + "");
+            injectText(addDetailsEmail, person.getEmail());
+            injectText(addDetailsMobNumber, person.getMobNo());
+
+            if (person.getCompanies() != null && person.getCompanies().size() > 0) {
+                RealmList<Company> companey = person.getCompanies();
+                for (Company c : companey) {
+                    View view = inflateView(R.layout.card_companey_details, addDetailsLlayoutWork);
+                    ((EditText) view.findViewById(R.id.company_name)).setText(c.getName());
+                    ((EditText) view.findViewById(R.id.company_title)).setText(c.getTitle());
+                    ((EditText) view.findViewById(R.id.company_salary)).setText(c.getSalary() + "");
+                    ((EditText) view.findViewById(R.id.company_startDate)).setText(c.getStartingDate());
+                    ((EditText) view.findViewById(R.id.company_endDate)).setText(c.getEndDate());
+                    addDetailsLlayoutWork.addView(view);
+                }
+            }
+
+            if (person.getSocialNetworks() != null && person.getSocialNetworks().size() > 0) {
+                RealmList<SocialNetwork> socialN = person.getSocialNetworks();
+                for (SocialNetwork s : socialN) {
+                    View view = inflateView(R.layout.card_social_network_details, addDetailsLlayoutSNworks);
+                    ((EditText) view.findViewById(R.id.sN_fullName)).setText(s.getName());
+                    ((EditText) view.findViewById(R.id.sN_socialLinks)).setText(s.getUrl());
+                    ((EditText) view.findViewById(R.id.sN_image_url)).setText(s.getImageUrl());
+                }
+
+            }
+            if (person.getFavMovies() != null && person.getFavMovies().size() > 0) {
+                RealmList<Movies> movies = person.getFavMovies();
+                for (Movies m : movies) {
+                    View view = inflateView(R.layout.card_movie, addDetailsLlayoutMovies);
+                    ((EditText) view.findViewById(R.id.movie_name)).setText(m.getName());
+                    ((EditText) view.findViewById(R.id.movie_directorName)).setText(m.getDirectorName());
+                    ((EditText) view.findViewById(R.id.movie_productionHouse)).setText(m.getProductionHouse());
+                    ((EditText) view.findViewById(R.id.movie_releaseYear)).setText(m.getStringReleaseDate());
+                    if (m.getActorNames() != null && m.getActorNames().size() > 0) {
+                        ((EditText) view.findViewById(R.id.movie_actor1)).setText(m.getActorNames().get(0).getString());
+                        if (m.getActorNames().size() > 1)
+                            ((EditText) view.findViewById(R.id.movie_actor2)).setText(m.getActorNames().get(1).getString());
+                    }
+                }
+            }
+        }
+    }
+
+    private View inflateView(int layoutId, ViewGroup layout) {
+        View view = LayoutInflater.from(getContext()).inflate(layoutId, layout, false);
+        return view;
+    }
+
+    private void setupElements() {
 
         //dateSpinner
         ArrayAdapter<CharSequence> dateAdapter = ArrayAdapter.createFromResource(getContext(), R.array.date, android.R.layout.simple_spinner_item);
@@ -165,17 +253,24 @@ public class FragmentAddDetails extends Fragment {
         relStatus.add("non of your business");
         ArrayAdapter<String> relStatusAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, relStatus);
         relStatusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sNRstatusSpinner.setAdapter(relStatusAdapter);
+//        sNRstatusSpinner.setAdapter(relStatusAdapter);
 
         realm = Realm.getDefaultInstance();
+
 
     }
 
     private void addToRealmObjectToDb() {
 
         realm.beginTransaction();
+
         Calendar calendar = Calendar.getInstance();
-        realmPersonObject = realm.createObject(Person.class, calendar.getTime().toString());
+        if (id == null)
+            realmPersonObject = realm.createObject(Person.class, calendar.getTime().toString());
+        else {
+//            realmPersonObject = realm.createObject(Person.class, id);
+            realmPersonObject = realm.where(Person.class).equalTo("id", id).findFirst();
+        }
 
         realmPersonObject.setName(extractString(addDetailsName));
         realmPersonObject.setMobNo(extractString(addDetailsMobNumber));
@@ -186,53 +281,75 @@ public class FragmentAddDetails extends Fragment {
                 + " " + addDetailsSpinnerMonth.getSelectedItem().toString()
                 + " " + addDetailsSpinnerYear.getSelectedItem().toString());
 
-        //Company Object
-        Company company = realm.createObject(Company.class);
-        company.setName(extractString(companyName));
-        company.setEndDate(extractString(companyEndDate));
-        company.setStartingDate(extractString(companyStartDate));
-        company.setSalary(convertStingToInt(extractString(companySalary)));
-        company.setTitle(extractString(companyTitle));
-        RealmList<Company> companyList = new RealmList<>();
-        companyList.add(company);
-        realmPersonObject.setCompanies(companyList);
-
-        //SocialNetwork Object
-        SocialNetwork socialNetwork = realm.createObject(SocialNetwork.class);
-        socialNetwork.setName(extractString(sNFullName));
-        socialNetwork.setUrl(extractString(sNSocialLinks));
-        socialNetwork.setImageUrl(extractString(sNImageUrl));
-        if (sNRstatusSpinner.getSelectedItem().toString().toLowerCase().contains("single")) {
-            socialNetwork.setRelationshipStatus(false);
-        } else {
-            socialNetwork.setRelationshipStatus(true);
+        if (companeyViewList.size() > 0) {
+            for (View company : companeyViewList) {
+                Company tempCompaney = realm.createObject(Company.class);
+                EditText name = (EditText) company.findViewById(R.id.company_name);
+                EditText title = (EditText) company.findViewById(R.id.company_title);
+                EditText startingDate = (EditText) company.findViewById(R.id.company_startDate);
+                EditText endDate = (EditText) company.findViewById(R.id.company_endDate);
+                EditText salary = (EditText) company.findViewById(R.id.company_salary);
+                tempCompaney.setName(extractString(name));
+                tempCompaney.setTitle(extractString(title));
+                tempCompaney.setStartingDate(extractString(startingDate));
+                tempCompaney.setEndDate(extractString(endDate));
+                tempCompaney.setSalary(convertStingToInt(extractString(salary)));
+                companyRealmList.add(tempCompaney);
+            }
         }
-        RealmList<SocialNetwork> socialNetworkRealmList = new RealmList<>();
-        socialNetworkRealmList.add(socialNetwork);
-        realmPersonObject.setSocialNetworks(socialNetworkRealmList);
+        if (companyRealmList.size() > 0) {
+            realmPersonObject.setCompanies(companyRealmList);
+        }
 
-        //Movies Object
-        Movies movies = realm.createObject(Movies.class);
-        movies.setName(extractString(movieName));
-        movies.setDirectorName(extractString(movieDirectorName));
-        movies.setProductionHouse(extractString(movieProductionHouse));
-        movies.setStringReleaseDate(extractString(movieReleaseYear));
-        RealmString s1 = realm.createObject(RealmString.class);
-        RealmString s2 = realm.createObject(RealmString.class);
-        s1.setString(extractString(movieActor1));
-        s2.setString(extractString(movieActor2));
-        RealmList<RealmString> actorList = new RealmList<>();
-        actorList.add(s1);
-        actorList.add(s2);
-        movies.setActorNames(actorList);
-        RealmList<Movies> moviesRealmList = new RealmList<>();
-        moviesRealmList.add(movies);
-        realmPersonObject.setFavMovies(moviesRealmList);
+
+//        //Company Object
+//        Company company = realm.createObject(Company.class);
+//        company.setName(extractString(companyName));
+//        company.setEndDate(extractString(companyEndDate));
+//        company.setStartingDate(extractString(companyStartDate));
+//        company.setSalary(convertStingToInt(extractString(companySalary)));
+//        company.setTitle(extractString(companyTitle));
+//        RealmList<Company> companyList = new RealmList<>();
+//        companyList.add(company);
+//        realmPersonObject.setCompanies(companyList);
+//
+//        //SocialNetwork Object
+//        SocialNetwork socialNetwork = realm.createObject(SocialNetwork.class);
+//        socialNetwork.setName(extractString(sNFullName));
+//        socialNetwork.setUrl(extractString(sNSocialLinks));
+//        socialNetwork.setImageUrl(extractString(sNImageUrl));
+//        if (sNRstatusSpinner.getSelectedItem().toString().toLowerCase().contains("single")) {
+//            socialNetwork.setRelationshipStatus(false);
+//        } else {
+//            socialNetwork.setRelationshipStatus(true);
+//        }
+//        RealmList<SocialNetwork> socialNetworkRealmList = new RealmList<>();
+//        socialNetworkRealmList.add(socialNetwork);
+//        realmPersonObject.setSocialNetworks(socialNetworkRealmList);
+//
+//        //Movies Object
+//        Movies movies = realm.createObject(Movies.class);
+//        movies.setName(extractString(movieName));
+//        movies.setDirectorName(extractString(movieDirectorName));
+//        movies.setProductionHouse(extractString(movieProductionHouse));
+//        movies.setStringReleaseDate(extractString(movieReleaseYear));
+//        RealmString s1 = realm.createObject(RealmString.class);
+//        RealmString s2 = realm.createObject(RealmString.class);
+//        s1.setString(extractString(movieActor1));
+//        s2.setString(extractString(movieActor2));
+//        RealmList<RealmString> actorList = new RealmList<>();
+//        actorList.add(s1);
+//        actorList.add(s2);
+//        movies.setActorNames(actorList);
+//        RealmList<Movies> moviesRealmList = new RealmList<>();
+//        moviesRealmList.add(movies);
+//        realmPersonObject.setFavMovies(moviesRealmList);
         realm.commitTransaction();
 
         emailDb();
 
     }
+
 
     private void emailDb() {
         File exportRealmFile = null;
@@ -262,6 +379,90 @@ public class FragmentAddDetails extends Fragment {
     }
 
     private void addCustomViews() {
+        addDetailsAddCompaney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final View addCompaney = LayoutInflater.from(getContext()).inflate(R.layout.card_companey_details, addDetailsLlayoutWork, false);
+                addCompaney.findViewById(R.id.companey_remove).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        companeyViewList.remove(addCompaney);
+                        addDetailsLlayoutWork.removeView(addCompaney);
+                    }
+                });
+                companeyViewList.add(addCompaney);
+                addDetailsLlayoutWork.addView(addCompaney);
+            }
+        });
+
+        addDetailsAddSocialNetwork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final View addSNetwork = LayoutInflater.from(getContext()).inflate(R.layout.card_social_network_details, addDetailsLlayoutSNworks, false);
+                addSNetwork.findViewById(R.id.sN_close).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        socialViewNList.remove(addSNetwork);
+                        addDetailsLlayoutSNworks.removeView(addSNetwork);
+                    }
+                });
+                socialViewNList.add(addSNetwork);
+                addDetailsLlayoutSNworks.addView(addSNetwork);
+            }
+        });
+
+        addDetailsAddMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final View movie = LayoutInflater.from(getContext()).inflate(R.layout.card_companey_details, addDetailsLlayoutMovies, false);
+                movie.findViewById(R.id.movie_close).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        movieViewList.remove(movie);
+                        addDetailsLlayoutMovies.removeView(movie);
+                    }
+                });
+                movieViewList.add(movie);
+                addDetailsLlayoutMovies.addView(movie);
+            }
+        });
+
+
+//        removeFromView(companeyViewList, R.id.companey_remove, listType.COMPANEY);
+//        removeFromView(socialViewNList, R.id.sN_close, listType.SOCIALN);
+//        removeFromView(movieViewList, R.id.movie_close, listType.MOVIE);
+    }
+
+    private void addViews(int layoutId, listType type, ViewGroup layout) {
+        View view = LayoutInflater.from(getContext()).inflate(layoutId, layout, false);
+        layout.addView(view);
+        if (type == listType.COMPANEY) {
+            companeyViewList.add(view);
+
+        }
+
+    }
+
+    private void removeFromView(final List<View> viewList, int buttonId, final listType type) {
+        Log.i(TAG, "enum Type : " + type.toString());
+        for (int i = 0; i < viewList.size(); i++) {
+            final int tempI = i;
+            viewList.get(i).findViewById(buttonId).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (type == listType.COMPANEY) {
+                        addDetailsLlayoutWork.removeView(viewList.get(tempI));
+                    } else if (type == listType.SOCIALN) {
+                        addDetailsLlayoutSNworks.removeView(viewList.get(tempI));
+                    } else if (type == listType.MOVIE) {
+                        addDetailsLlayoutMovies.removeView(viewList.get(tempI));
+                    }
+                    viewList.remove(tempI);
+
+
+                }
+            });
+        }
 
     }
 
@@ -275,48 +476,48 @@ public class FragmentAddDetails extends Fragment {
         person.setDob("" + addDetailsSpinnerDate.getSelectedItem().toString()
                 + " " + addDetailsSpinnerMonth.getSelectedItem().toString()
                 + " " + addDetailsSpinnerYear.getSelectedItem().toString());
-
-        //Company Object
-        Company company = new Company();
-        company.setName(extractString(companyName));
-        company.setEndDate(extractString(companyEndDate));
-        company.setStartingDate(extractString(companyStartDate));
-        company.setSalary(convertStingToInt(extractString(companySalary)));
-        company.setTitle(extractString(companyTitle));
-        RealmList<Company> companyList = new RealmList<>();
-        companyList.add(company);
-        person.setCompanies(companyList);
-
-        //SocialNetwork Object
-        SocialNetwork socialNetwork = new SocialNetwork();
-        socialNetwork.setName(extractString(sNFullName));
-        socialNetwork.setUrl(extractString(sNSocialLinks));
-        socialNetwork.setImageUrl(extractString(sNImageUrl));
-        if (sNRstatusSpinner.getSelectedItem().toString().toLowerCase().contains("single")) {
-            socialNetwork.setRelationshipStatus(false);
-        } else {
-            socialNetwork.setRelationshipStatus(true);
-        }
-        RealmList<SocialNetwork> socialNetworkRealmList = new RealmList<>();
-        socialNetworkRealmList.add(socialNetwork);
-        person.setSocialNetworks(socialNetworkRealmList);
-
-        //Movies Object
-        Movies movies = new Movies();
-        movies.setName(extractString(movieName));
-        movies.setDirectorName(extractString(movieDirectorName));
-        movies.setProductionHouse(extractString(movieProductionHouse));
-        movies.setStringReleaseDate(extractString(movieReleaseYear));
-        RealmString s1 = new RealmString(), s2 = new RealmString();
-        s1.setString(extractString(movieActor1));
-        s2.setString(extractString(movieActor2));
-        RealmList<RealmString> actorList = new RealmList<>();
-        actorList.add(s1);
-        actorList.add(s2);
-        movies.setActorNames(actorList);
-        RealmList<Movies> moviesRealmList = new RealmList<>();
-        moviesRealmList.add(movies);
-        person.setFavMovies(moviesRealmList);
+//
+//        //Company Object
+//        Company company = new Company();
+//        company.setName(extractString(companyName));
+//        company.setEndDate(extractString(companyEndDate));
+//        company.setStartingDate(extractString(companyStartDate));
+//        company.setSalary(convertStingToInt(extractString(companySalary)));
+//        company.setTitle(extractString(companyTitle));
+//        RealmList<Company> companyList = new RealmList<>();
+//        companyList.add(company);
+//        person.setCompanies(companyList);
+//
+//        //SocialNetwork Object
+//        SocialNetwork socialNetwork = new SocialNetwork();
+//        socialNetwork.setName(extractString(sNFullName));
+//        socialNetwork.setUrl(extractString(sNSocialLinks));
+//        socialNetwork.setImageUrl(extractString(sNImageUrl));
+//        if (sNRstatusSpinner.getSelectedItem().toString().toLowerCase().contains("single")) {
+//            socialNetwork.setRelationshipStatus(false);
+//        } else {
+//            socialNetwork.setRelationshipStatus(true);
+//        }
+//        RealmList<SocialNetwork> socialNetworkRealmList = new RealmList<>();
+//        socialNetworkRealmList.add(socialNetwork);
+//        person.setSocialNetworks(socialNetworkRealmList);
+//
+//        //Movies Object
+//        Movies movies = new Movies();
+//        movies.setName(extractString(movieName));
+//        movies.setDirectorName(extractString(movieDirectorName));
+//        movies.setProductionHouse(extractString(movieProductionHouse));
+//        movies.setStringReleaseDate(extractString(movieReleaseYear));
+//        RealmString s1 = new RealmString(), s2 = new RealmString();
+//        s1.setString(extractString(movieActor1));
+//        s2.setString(extractString(movieActor2));
+//        RealmList<RealmString> actorList = new RealmList<>();
+//        actorList.add(s1);
+//        actorList.add(s2);
+//        movies.setActorNames(actorList);
+//        RealmList<Movies> moviesRealmList = new RealmList<>();
+//        moviesRealmList.add(movies);
+//        person.setFavMovies(moviesRealmList);
 
         return person;
 
@@ -357,7 +558,10 @@ public class FragmentAddDetails extends Fragment {
         } else {
             return editText.getText().toString();
         }
+    }
 
+    private void injectText(EditText editText, String string) {
+        editText.setText(string);
     }
 
     private int convertStingToInt(String string) {
@@ -382,6 +586,8 @@ public class FragmentAddDetails extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void refreshViews();
+
+        Person getPerson();
     }
 
 }

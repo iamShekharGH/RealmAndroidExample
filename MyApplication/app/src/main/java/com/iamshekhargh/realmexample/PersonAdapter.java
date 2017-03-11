@@ -3,6 +3,7 @@ package com.iamshekhargh.realmexample;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,6 @@ import com.iamshekhargh.realmexample.Models.Person;
 import com.iamshekhargh.realmexample.StaticClasses.StaticFunctions;
 
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,9 +37,12 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     Realm realm;
     Context context;
 
+    Helper helper;
 
-    public PersonAdapter(Context context) {
+
+    public PersonAdapter(Context context, Helper helper) {
         this.context = context;
+        this.helper = helper;
         try {
             realm = Realm.getDefaultInstance();
         } catch (Exception e) {
@@ -47,7 +50,8 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             RealmConfiguration config = new RealmConfiguration.Builder()
                     .deleteRealmIfMigrationNeeded()
                     .build();
-            realm = Realm.getDefaultInstance();
+//            realm = Realm.getDefaultInstance();
+            realm = Realm.getInstance(config);
         }
 
         Log.d(TAG, "path: " + realm.getPath());
@@ -67,8 +71,66 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //It is a good practice to load all info in the ViewHolder itself.
-        // It is less resource hungry this way.
+
+        if (persons.size() > 0) {
+            final Person person = persons.get(position);
+
+            setupTextView(holder.textViewName, person.getName());
+            setupTextView(holder.textViewAge, person.getAge() + "");
+            setupTextView(holder.textViewDob, person.getDob());
+            setupTextView(holder.textViewEmail, person.getEmail());
+            setupTextView(holder.textViewMobileNo, person.getMobNo());
+            setupTextView(holder.addDetailsId, person.getId());
+            if (person.getGender()) {
+                holder.imageView.setBackgroundResource(R.drawable.male);
+            } else holder.imageView.setBackgroundResource(R.drawable.female);
+
+            holder.basicInfoCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    helper.launchDetailsFragment(person.getId());
+                }
+            });
+
+
+            View.OnLongClickListener longPress = new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    StaticFunctions.alertDialogTwoButtons(context, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //Delete Item.
+                            realm.beginTransaction();
+                            RealmResults<Person> result = realm.where(Person.class).equalTo("id", person.getId()).findAll();
+                            result.deleteAllFromRealm();
+                            realm.commitTransaction();
+
+                            notifyDataSetChanged();
+
+
+                        }
+                    }, "Hell Yeah", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    }, "Nope, i need more time.", "Delete", "Are you Sure ?");
+                    return true;
+                }
+            };
+
+            View.OnClickListener press = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Long Press to delete", Toast.LENGTH_LONG).show();
+                }
+            };
+            holder.delete.setOnClickListener(press);
+            holder.delete.setOnLongClickListener(longPress);
+
+        } else {
+            setupTextView(holder.emptyLayoutText, "Nothing To Show.");
+        }
+
     }
 
     @Override
@@ -83,10 +145,18 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        if (persons.size() < 0)
-            return 0;
-        else
-            return persons.size();
+        return persons.size();
+    }
+
+    private void setupTextView(TextView textView, String string) {
+        if (textView != null) {
+            textView.setText(string);
+        }
+    }
+
+    public interface Helper {
+        void launchDetailsFragment(String id);
+
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -115,6 +185,9 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
         @BindView(R.id.delete)
         ImageView delete;
         @Nullable
+        @BindView(R.id.basicInfoCard)
+        CardView basicInfoCard;
+        @Nullable
         @BindView(R.id.emptyLayout_text)
         TextView emptyLayoutText;
 
@@ -122,57 +195,59 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             super(view);
             ButterKnife.bind(this, view);
 
-            if (delete != null)
-                delete.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-                        StaticFunctions.alertDialogTwoButtons(context, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Person person = persons.get(getAdapterPosition());
-                                //Delete Item.
-                                realm.beginTransaction();
-                                RealmResults<Person> result = realm.where(Person.class).equalTo("id", person.getId()).findAll();
-                                result.deleteAllFromRealm();
-                                realm.commitTransaction();
-
-                                notifyDataSetChanged();
-
-
-                            }
-                        }, "Hell Yeah", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                            }
-                        }, "Nope, i need more time.", "Delete", "Are you Sure ?");
-                        return true;
-                    }
-                });
-            if (delete != null)
-                delete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Toast.makeText(context, "Long Press to delete", Toast.LENGTH_LONG).show();
-
-                    }
-                });
-            if (persons != null && persons.size() > 0 && getAdapterPosition() >= 0) {
-                Log.i(TAG, "position\t:" + getAdapterPosition());
-                setupTextView(textViewName, persons.get(getAdapterPosition()).getName());
-                setupTextView(textViewAge, String.format(Locale.getDefault(), "Age : %d", persons.get(getAdapterPosition()).getAge()));
-                setupTextView(textViewMobileNo, String.format(Locale.getDefault(), "%s", persons.get(getAdapterPosition()).getMobNo()));
-                setupTextView(textViewEmail, persons.get(getAdapterPosition()).getEmail());
-                setupTextView(textViewDob, persons.get(getAdapterPosition()).getDob());
-                setupTextView(addDetailsId, persons.get(getAdapterPosition()).getId());
-
-                if (imageView != null)
-                    if (persons.get(getAdapterPosition()).getGender())
-                        imageView.setBackgroundResource(R.drawable.male);
-                    else
-                        imageView.setBackgroundResource(R.drawable.female);
-            } else {
-                setupTextView(emptyLayoutText, "Nothing to show");
-            }
+//
+//            if (delete != null)
+//                delete.setOnLongClickListener(new View.OnLongClickListener() {
+//                    @Override
+//                    public boolean onLongClick(View view) {
+//                        StaticFunctions.alertDialogTwoButtons(context, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Person person = persons.get(getAdapterPosition());
+//                                //Delete Item.
+//                                realm.beginTransaction();
+//                                RealmResults<Person> result = realm.where(Person.class).equalTo("id", person.getId()).findAll();
+//                                result.deleteAllFromRealm();
+//                                realm.commitTransaction();
+//
+//                                notifyDataSetChanged();
+//
+//
+//                            }
+//                        }, "Hell Yeah", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                            }
+//                        }, "Nope, i need more time.", "Delete", "Are you Sure ?");
+//                        return true;
+//                    }
+//                });
+//            if (delete != null)
+//                delete.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        Toast.makeText(context, "Long Press to delete", Toast.LENGTH_LONG).show();
+//
+//                    }
+//                });
+//            Log.i(TAG, "position\t:" + getLayoutPosition());
+//            if (persons != null && persons.size() > 0 && getAdapterPosition() >= 0) {
+//
+//                setupTextView(textViewName, persons.get(getAdapterPosition()).getName());
+//                setupTextView(textViewAge, String.format(Locale.getDefault(), "Age : %d", persons.get(getAdapterPosition()).getAge()));
+//                setupTextView(textViewMobileNo, String.format(Locale.getDefault(), "%s", persons.get(getAdapterPosition()).getMobNo()));
+//                setupTextView(textViewEmail, persons.get(getAdapterPosition()).getEmail());
+//                setupTextView(textViewDob, persons.get(getAdapterPosition()).getDob());
+//                setupTextView(addDetailsId, persons.get(getAdapterPosition()).getId());
+//
+//                if (imageView != null)
+//                    if (persons.get(getAdapterPosition()).getGender())
+//                        imageView.setBackgroundResource(R.drawable.male);
+//                    else
+//                        imageView.setBackgroundResource(R.drawable.female);
+//            } else {
+//                setupTextView(emptyLayoutText, "Nothing to show");
+//            }
 
         }
 

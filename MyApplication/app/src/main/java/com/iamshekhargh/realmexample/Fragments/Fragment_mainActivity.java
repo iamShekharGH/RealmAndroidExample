@@ -17,7 +17,7 @@ import com.iamshekhargh.realmexample.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Fragment_mainActivity extends Fragment {
+public class Fragment_mainActivity extends Fragment implements PersonAdapter.Helper {
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
@@ -48,12 +48,13 @@ public class Fragment_mainActivity extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerview.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        adapter = new PersonAdapter(getContext());
+        adapter = new PersonAdapter(getContext(), this);
         recyclerview.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mListener.createEmptyForm();
                 mListener.addFragment(FragmentAddDetails.newInstance());
             }
         });
@@ -80,7 +81,17 @@ public class Fragment_mainActivity extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void launchDetailsFragment(String id) {
+        mListener.launchThisFragment(id);
+    }
+
     public interface OnFragmentInteractionListener {
+
+        void createEmptyForm();
+
         void addFragment(Fragment fragment);
+
+        void launchThisFragment(String id);
     }
 }
