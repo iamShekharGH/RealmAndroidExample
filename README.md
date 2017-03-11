@@ -95,8 +95,7 @@ List<ModelObject> list = realm.where(ModelObject.class).findAll();
 
 Few things to keep in mind
 
-- You cannot store lists of the basic objects (String). you will have to create custom RealmSting or better-named object which extends RealmObject and then use it.
-- 
+* You cannot store lists of the basic objects (String). you will have to create custom RealmSting or better-named object which extends RealmObject and then use it.
 
 
 
