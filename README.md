@@ -7,19 +7,19 @@ Step I
 The first step would be to add content to your gradle files.
 There are two gradle files 
 You have to add this to the project level build gradle
-`classpath "io.realm:realm-gradle-plugin:3.0.0" `
+```classpath "io.realm:realm-gradle-plugin:3.0.0" ```
 inside dependencies.
 and add 
-`apply plugin: 'realm-android'`
+```apply plugin: 'realm-android'```
 to the application level gradle file.
 
 Step II
 You nedd to add the following lines to the Appliction class .
 create a new class in to root directory.
 make it extend Application class , override the onCreate function and add these lines to it.
-`Realm.init(this);
+```Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
-	        Realm.setDefaultConfiguration(realmConfiguration);))))`
+	        Realm.setDefaultConfiguration(realmConfiguration);))))```
 alsom make sure in your manifest file in the <applications 
 section add a attribute name and add this class you created to it.
 
@@ -38,14 +38,14 @@ I am using recycler view to populate information and using a seperate page to ad
 
 all you need to understand is to create a entry in the db you need to do the followinf steps.
 First get a instant of the realm Object, do that by writing this.
-`Realm realm = Realm.getDefaultInstance();`
+```Realm realm = Realm.getDefaultInstance();```
 
 Now that you have the realm object reference we will add a entry to the Realm db.
 You do it like this.
-`realm.beginTransaction();
+```realm.beginTransaction();
 ModelObject model = Realm.createObject(ModelObject.class);
 model.setDate(date);
-realm.commitTransaction();`
+realm.commitTransaction();```
 
 Thats it you added an entry to your realm Db;
 
@@ -54,10 +54,10 @@ Step V
 Deleting an entry from the table.
 Put a Primary key for every row. you will need that to update or delete information in that perticular field.
 here to delete that from the list i do the following.
-`realm.beginTransaction();
+```realm.beginTransaction();
 RealmResult<ModelObject> list = realm.where(ModelObject.class).equalTo("id","the id that you set").findAll();
 list.deleteAllFromRealm();
-realm.commitTransaction();`
+realm.commitTransaction();```
 
 Thats it. you removed the field from the table;
 
@@ -67,15 +67,15 @@ Step VI
 Reading and updating are fairly simple , 
 all you have to do is get the reference by using the id and begin and commit transsaction .
 
-`realm.beginTransaction();
+```realm.beginTransaction();
 ModelObject m = realm.where(ModelObject.class).findFirst();
 m.setInformation();
 //.. do the changes 
 
-realm.commitTransaction();`
+realm.commitTransaction();```
 
 reading is also the same 
-`List<ModelObject> list = realm.where(ModelObject.class).findAll();`
+```List<ModelObject> list = realm.where(ModelObject.class).findAll();```
 
 
 Few things to keep in mind

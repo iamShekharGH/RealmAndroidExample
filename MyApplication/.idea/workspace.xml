@@ -16,11 +16,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi/values.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_companey_details.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_companey_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_movie.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_movie.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_person_basic_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_person_basic_info.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../README.md" afterPath="$PROJECT_DIR$/../README.md" />
     </list>
     <ignored path="Realm Example.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,14 +59,13 @@
       <file leaf-file-name="FragmentAddDetails.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="182" column="56" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="56" />
+            <state relative-caret-position="1260">
+              <caret line="149" column="78" selection-start-line="149" selection-start-column="78" selection-end-line="149" selection-end-column="78" />
               <folding>
                 <element signature="e#2167#2201#0" expanded="false" />
                 <element signature="class#listType#0;class#FragmentAddDetails#0" expanded="false" />
                 <element signature="method#FragmentAddDetails#0;class#FragmentAddDetails#0" expanded="false" />
                 <element signature="method#onCreateView#0;class#FragmentAddDetails#0" expanded="false" />
-                <element signature="method#onViewCreated#0;class#FragmentAddDetails#0" expanded="false" />
                 <element signature="method#inflateView#0;class#FragmentAddDetails#0" expanded="false" />
                 <element signature="method#addToRealmObjectToDb#0;class#FragmentAddDetails#0" expanded="false" />
                 <element signature="e#12527#12553#0" expanded="false" />
@@ -85,24 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="card_social_network_details.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="card_movie.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_movie.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            <state relative-caret-position="252">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -121,6 +111,16 @@
           </provider>
           <provider editor-type-id="android-designer2">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -2048,17 +2048,18 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/StaticClasses/StaticFunctions.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_person_basic_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Models/SocialNetwork.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/Fragment_mainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_fragment_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_movie.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_companey_details.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_person_basic_info.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml" />
       </list>
     </option>
   </component>
@@ -2077,7 +2078,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -2090,13 +2091,122 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="FullScreen" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="card&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_movie.xml&#10;add&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/fragment_add_details.xml&#10;Soc&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Models/SocialNetwork.java&#10;main&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/activity_main.xml&#10;Static&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/StaticClasses/StaticFunctions.java&#10;adap&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;ca&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_companey_details.xml&#10;fra&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Fragments/Fragment_mainActivity.java&#10;Appl&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/MyApplication.java&#10;my&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/MyApplication.java&#10;ada&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;gradle&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;Ada&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;sty&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/values/styles.xml&#10;bui&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;car&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_companey_details.xml&#10;manife&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml&#10;Per&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Models/Person.java&#10;card_s&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_social_network_details.xml&#10;card_com&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_companey_details.xml&#10;mani&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml&#10;bu&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;androidma&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml" />
+    <property name="SearchEverywhereHistoryKey" value="car&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_person_basic_info.xml&#10;card&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_movie.xml&#10;add&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/fragment_add_details.xml&#10;Soc&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Models/SocialNetwork.java&#10;main&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/activity_main.xml&#10;Static&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/StaticClasses/StaticFunctions.java&#10;adap&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;ca&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_companey_details.xml&#10;fra&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Fragments/Fragment_mainActivity.java&#10;Appl&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/MyApplication.java&#10;my&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/MyApplication.java&#10;ada&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;gradle&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;Ada&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java&#10;sty&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/values/styles.xml&#10;bui&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;manife&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml&#10;Per&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/java/com/iamshekhargh/realmexample/Models/Person.java&#10;card_s&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_social_network_details.xml&#10;card_com&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/res/layout/card_companey_details.xml&#10;mani&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml&#10;bu&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/build.gradle&#10;androidma&#9;FILE&#9;file:///Users/iamShekharGH/LearnStuff/GitRepos/RealmSample/RealmAndroidExample/MyApplication/app/src/main/AndroidManifest.xml" />
     <property name="asset" value="rO0ABXNyADxkZS5tcHJlbmdlbWFubi5pbnRlbGxpai5wbHVnaW4uYW5kcm9pZGljb25zLm1vZGVsLkltYWdlQXNzZXQl990GqIfF7gIABkwACGNhdGVnb3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAGY29sb3JzdAAQTGphdmEvdXRpbC9MaXN0O0wABG5hbWVxAH4AAUwABHBhY2txAH4AAUwAC3Jlc29sdXRpb25zcQB+AAJMAAVzaXplc3EAfgACeHB0AApuYXZpZ2F0aW9uc3IAE2phdmEudXRpbC5BcnJheUxpc3R4gdIdmcdhnQMAAUkABHNpemV4cAAAAAJ3BAAAAAJ0AAVibGFja3QABXdoaXRleHQACGljX2Nsb3NldAAObWF0ZXJpYWxfaWNvbnNzcQB+AAUAAAAGdwQAAAAGfnIAPGRlLm1wcmVuZ2VtYW5uLmludGVsbGlqLnBsdWdpbi5hbmRyb2lkaWNvbnMubW9kZWwuUmVzb2x1dGlvbgAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABkFOWURQSX5xAH4ADHQABEhEUEl+cQB+AAx0AARNRFBJfnEAfgAMdAAFWEhEUEl+cQB+AAx0AAZYWEhEUEl+cQB+AAx0AAdYWFhIRFBJeHNxAH4ABQAAAAR3BAAAAAR0AAQxOGRwdAAEMjRkcHQABDM2ZHB0AAQ0OGRweA==" />
     <property name="color" value="black" />
     <property name="size" value="18dp" />
@@ -2616,7 +2726,8 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20028612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20028612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2630,7 +2741,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287841" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2655,36 +2765,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/MyApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="43" column="70" selection-start-line="43" selection-start-column="70" selection-end-line="43" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-            <element signature="e#1285#1286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2694,7 +2774,6 @@
             <element signature="class#listType#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#FragmentAddDetails#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#onCreateView#0;class#FragmentAddDetails#0" expanded="false" />
-            <element signature="method#onViewCreated#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#inflateView#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#addToRealmObjectToDb#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="e#12527#12553#0" expanded="false" />
@@ -2745,7 +2824,6 @@
             <element signature="class#listType#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#FragmentAddDetails#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#onCreateView#0;class#FragmentAddDetails#0" expanded="false" />
-            <element signature="method#onViewCreated#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#inflateView#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#addToRealmObjectToDb#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="e#12527#12553#0" expanded="false" />
@@ -3033,14 +3111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/StaticClasses/StaticFunctions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="574">
@@ -3086,15 +3156,52 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/female.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/male.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_person_basic_info.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        <state relative-caret-position="144">
+          <caret line="85" column="49" selection-start-line="85" selection-start-column="49" selection-end-line="85" selection-end-column="49" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/PersonAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="169" column="35" selection-start-line="169" selection-start-column="35" selection-end-line="169" selection-end-column="35" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_companey_details.xml">
@@ -3110,19 +3217,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_movie.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_social_network_details.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        <state relative-caret-position="252">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -3132,14 +3228,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iamshekhargh/realmexample/Fragments/FragmentAddDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="182" column="56" selection-start-line="182" selection-start-column="56" selection-end-line="182" selection-end-column="56" />
+        <state relative-caret-position="1260">
+          <caret line="149" column="78" selection-start-line="149" selection-start-column="78" selection-end-line="149" selection-end-column="78" />
           <folding>
             <element signature="e#2167#2201#0" expanded="false" />
             <element signature="class#listType#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#FragmentAddDetails#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#onCreateView#0;class#FragmentAddDetails#0" expanded="false" />
-            <element signature="method#onViewCreated#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#inflateView#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="method#addToRealmObjectToDb#0;class#FragmentAddDetails#0" expanded="false" />
             <element signature="e#12527#12553#0" expanded="false" />

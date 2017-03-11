@@ -76,10 +76,10 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
             final Person person = persons.get(position);
 
             setupTextView(holder.textViewName, person.getName());
-            setupTextView(holder.textViewAge, person.getAge() + "");
+            setupTextView(holder.textViewAge, "Age " + person.getAge());
             setupTextView(holder.textViewDob, person.getDob());
             setupTextView(holder.textViewEmail, person.getEmail());
-            setupTextView(holder.textViewMobileNo, person.getMobNo());
+            setupTextView(holder.textViewMobileNo, "+91 " + person.getMobNo());
             setupTextView(holder.addDetailsId, person.getId());
             if (person.getGender()) {
                 holder.imageView.setBackgroundResource(R.drawable.male);
