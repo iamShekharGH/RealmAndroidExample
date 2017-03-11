@@ -23,6 +23,7 @@ import com.iamshekhargh.realmexample.Models.Movies;
 import com.iamshekhargh.realmexample.Models.Person;
 import com.iamshekhargh.realmexample.Models.SocialNetwork;
 import com.iamshekhargh.realmexample.R;
+import com.iamshekhargh.realmexample.StaticClasses.StaticFunctions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -64,7 +65,6 @@ public class FragmentAddDetails extends Fragment {
     @BindView(R.id.addDetails_llayout_Movies)
     LinearLayout addDetailsLlayoutMovies;
 
-//
 //    @BindView(R.id.company_name)
 //    EditText companyName;
 //    @BindView(R.id.company_title)
@@ -179,6 +179,9 @@ public class FragmentAddDetails extends Fragment {
             injectText(addDetailsAge, person.getAge() + "");
             injectText(addDetailsEmail, person.getEmail());
             injectText(addDetailsMobNumber, person.getMobNo());
+
+            StaticFunctions.logDotI(TAG, person.getDob());
+
 
             if (person.getCompanies() != null && person.getCompanies().size() > 0) {
                 RealmList<Company> companey = person.getCompanies();
@@ -414,7 +417,7 @@ public class FragmentAddDetails extends Fragment {
         addDetailsAddMovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final View movie = LayoutInflater.from(getContext()).inflate(R.layout.card_companey_details, addDetailsLlayoutMovies, false);
+                final View movie = LayoutInflater.from(getContext()).inflate(R.layout.card_movie, addDetailsLlayoutMovies, false);
                 movie.findViewById(R.id.movie_close).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
