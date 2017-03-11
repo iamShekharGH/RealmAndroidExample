@@ -62,6 +62,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
+        StaticFunctions.logDotI(TAG, "viewType " + viewType);
         if (viewType == 1)
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_person_basic_info, parent, false);
         else
@@ -136,7 +137,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
     @Override
     public int getItemViewType(int position) {
         //For multiple layouts
-        if (persons.size() == 0)
+        if (persons.size() < 1)
             return 0;
         else
             return 1;
@@ -145,6 +146,9 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
+
+        if (persons.size() == 0)
+            return 1;
         return persons.size();
     }
 

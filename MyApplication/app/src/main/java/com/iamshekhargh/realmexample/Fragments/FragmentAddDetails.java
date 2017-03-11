@@ -21,6 +21,7 @@ import android.widget.ToggleButton;
 import com.iamshekhargh.realmexample.Models.Company;
 import com.iamshekhargh.realmexample.Models.Movies;
 import com.iamshekhargh.realmexample.Models.Person;
+import com.iamshekhargh.realmexample.Models.RealmString;
 import com.iamshekhargh.realmexample.Models.SocialNetwork;
 import com.iamshekhargh.realmexample.R;
 import com.iamshekhargh.realmexample.StaticClasses.StaticFunctions;
@@ -64,43 +65,6 @@ public class FragmentAddDetails extends Fragment {
     LinearLayout addDetailsLlayoutSNworks;
     @BindView(R.id.addDetails_llayout_Movies)
     LinearLayout addDetailsLlayoutMovies;
-
-//    @BindView(R.id.company_name)
-//    EditText companyName;
-//    @BindView(R.id.company_title)
-//    EditText companyTitle;
-//    @BindView(R.id.company_startDate)
-//    EditText companyStartDate;
-//    @BindView(R.id.company_endDate)
-//    EditText companyEndDate;
-//    @BindView(R.id.company_salary)
-//    EditText companySalary;
-//    @BindView(R.id.sN_fullName)
-//    EditText sNFullName;
-//    @BindView(R.id.sN_socialLinks)
-//    EditText sNSocialLinks;
-//    @BindView(R.id.sN_rstatus_spinner)
-//    Spinner sNRstatusSpinner;
-//    @BindView(R.id.sN_image_url)
-//    EditText sNImageUrl;
-//    @BindView(R.id.sN_feedLayout)
-//    LinearLayout sNFeedLayout;
-//    @BindView(R.id.socialnetwork_card_layout)
-//    ConstraintLayout socialnetworkCardLayout;
-//    @BindView(R.id.movie_name)
-//    EditText movieName;
-//    @BindView(R.id.movie_releaseYear)
-//    EditText movieReleaseYear;
-//    @BindView(R.id.movie_productionHouse)
-//    EditText movieProductionHouse;
-//    @BindView(R.id.movie_directorName)
-//    EditText movieDirectorName;
-//    @BindView(R.id.movie_actor1)
-//    EditText movieActor1;
-//    @BindView(R.id.movie_actor2)
-//    EditText movieActor2;
-
-
     @BindView(R.id.addDetails_addCompaney)
     ImageView addDetailsAddCompaney;
     @BindView(R.id.addDetails_addSocialNetwork)
@@ -116,14 +80,14 @@ public class FragmentAddDetails extends Fragment {
     RealmList<SocialNetwork> socialNetworks = new RealmList<>();
     RealmList<Movies> moviesRealmList = new RealmList<>();
 
-    List<View> companeyViewList = new ArrayList<>();
+    List<View> companyViewList = new ArrayList<>();
     List<View> socialViewNList = new ArrayList<>();
     List<View> movieViewList = new ArrayList<>();
 
     String id;
 
     private enum listType {
-        COMPANEY,
+        COMPANY,
         SOCIALN,
         MOVIE
     }
@@ -179,6 +143,10 @@ public class FragmentAddDetails extends Fragment {
             injectText(addDetailsAge, person.getAge() + "");
             injectText(addDetailsEmail, person.getEmail());
             injectText(addDetailsMobNumber, person.getMobNo());
+
+//            addDetailsSpinnerDate.setSelection(10);
+
+            //TODO initialise date.
 
             StaticFunctions.logDotI(TAG, person.getDob());
 
@@ -284,14 +252,16 @@ public class FragmentAddDetails extends Fragment {
                 + " " + addDetailsSpinnerMonth.getSelectedItem().toString()
                 + " " + addDetailsSpinnerYear.getSelectedItem().toString());
 
-        if (companeyViewList.size() > 0) {
-            for (View company : companeyViewList) {
+        if (companyViewList.size() > 0) {
+            for (View company : companyViewList) {
                 Company tempCompaney = realm.createObject(Company.class);
+
                 EditText name = (EditText) company.findViewById(R.id.company_name);
                 EditText title = (EditText) company.findViewById(R.id.company_title);
                 EditText startingDate = (EditText) company.findViewById(R.id.company_startDate);
                 EditText endDate = (EditText) company.findViewById(R.id.company_endDate);
                 EditText salary = (EditText) company.findViewById(R.id.company_salary);
+
                 tempCompaney.setName(extractString(name));
                 tempCompaney.setTitle(extractString(title));
                 tempCompaney.setStartingDate(extractString(startingDate));
@@ -299,9 +269,54 @@ public class FragmentAddDetails extends Fragment {
                 tempCompaney.setSalary(convertStingToInt(extractString(salary)));
                 companyRealmList.add(tempCompaney);
             }
-        }
-        if (companyRealmList.size() > 0) {
             realmPersonObject.setCompanies(companyRealmList);
+        }
+
+        if (socialViewNList.size() > 0) {
+            for (View sN : socialViewNList) {
+                SocialNetwork socialNetwork = realm.createObject(SocialNetwork.class);
+
+                EditText name = (EditText) sN.findViewById(R.id.sN_fullName);
+                EditText url = (EditText) sN.findViewById(R.id.sN_socialLinks);
+                EditText imageUrl = (EditText) sN.findViewById(R.id.sN_image_url);
+                Spinner relStatus = (Spinner) sN.findViewById(R.id.sN_rstatus_spinner);
+
+                socialNetwork.setName(extractString(name));
+                socialNetwork.setUrl(extractString(url));
+                socialNetwork.setImageUrl(extractString(imageUrl));
+                socialNetwork.setRelationshipStatusString(relStatus.getSelectedItem().toString());
+                if (relStatus.getSelectedItem().toString().toLowerCase().contains("single")) {
+                    socialNetwork.setRelationshipStatus(false);
+                } else socialNetwork.setRelationshipStatus(true);
+                socialNetworks.add(socialNetwork);
+            }
+            realmPersonObject.setSocialNetworks(socialNetworks);
+        }
+
+        if (movieViewList.size() > 0) {
+            for (View movie : movieViewList) {
+                Movies m = realm.createObject(Movies.class);
+
+                EditText name = (EditText) movie.findViewById(R.id.movie_name);
+                EditText releseYr = (EditText) movie.findViewById(R.id.movie_releaseYear);
+                EditText productionHouse = (EditText) movie.findViewById(R.id.movie_productionHouse);
+                EditText directorName = (EditText) movie.findViewById(R.id.movie_directorName);
+                EditText actor1 = (EditText) movie.findViewById(R.id.movie_actor1);
+                EditText actor2 = (EditText) movie.findViewById(R.id.movie_actor2);
+
+                m.setName(extractString(name));
+                m.setStringReleaseDate(extractString(releseYr));
+                m.setProductionHouse(extractString(productionHouse));
+                m.setDirectorName(extractString(directorName));
+                RealmList<RealmString> actorList = new RealmList<>();
+                RealmString string = new RealmString();
+                string.setString(extractString(actor1));
+                actorList.add(string);
+                string.setString(extractString(actor2));
+                actorList.add(string);
+                moviesRealmList.add(m);
+            }
+            realmPersonObject.setFavMovies(moviesRealmList);
         }
 
 
@@ -389,11 +404,11 @@ public class FragmentAddDetails extends Fragment {
                 addCompaney.findViewById(R.id.companey_remove).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        companeyViewList.remove(addCompaney);
+                        companyViewList.remove(addCompaney);
                         addDetailsLlayoutWork.removeView(addCompaney);
                     }
                 });
-                companeyViewList.add(addCompaney);
+                companyViewList.add(addCompaney);
                 addDetailsLlayoutWork.addView(addCompaney);
             }
         });
@@ -431,7 +446,7 @@ public class FragmentAddDetails extends Fragment {
         });
 
 
-//        removeFromView(companeyViewList, R.id.companey_remove, listType.COMPANEY);
+//        removeFromView(companyViewList, R.id.companey_remove, listType.COMPANY);
 //        removeFromView(socialViewNList, R.id.sN_close, listType.SOCIALN);
 //        removeFromView(movieViewList, R.id.movie_close, listType.MOVIE);
     }
@@ -439,8 +454,8 @@ public class FragmentAddDetails extends Fragment {
     private void addViews(int layoutId, listType type, ViewGroup layout) {
         View view = LayoutInflater.from(getContext()).inflate(layoutId, layout, false);
         layout.addView(view);
-        if (type == listType.COMPANEY) {
-            companeyViewList.add(view);
+        if (type == listType.COMPANY) {
+            companyViewList.add(view);
 
         }
 
@@ -453,7 +468,7 @@ public class FragmentAddDetails extends Fragment {
             viewList.get(i).findViewById(buttonId).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (type == listType.COMPANEY) {
+                    if (type == listType.COMPANY) {
                         addDetailsLlayoutWork.removeView(viewList.get(tempI));
                     } else if (type == listType.SOCIALN) {
                         addDetailsLlayoutSNworks.removeView(viewList.get(tempI));

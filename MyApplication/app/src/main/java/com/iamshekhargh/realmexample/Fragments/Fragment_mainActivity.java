@@ -43,6 +43,7 @@ public class Fragment_mainActivity extends Fragment implements PersonAdapter.Hel
         return view;
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
