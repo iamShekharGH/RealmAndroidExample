@@ -77,7 +77,7 @@ public class FragmentAddDetails extends Fragment {
     Realm realm;
     Person realmPersonObject;
     RealmList<Company> companyRealmList = new RealmList<>();
-    RealmList<SocialNetwork> socialNetworks = new RealmList<>();
+    RealmList<SocialNetwork> socialNetworkRealmList = new RealmList<>();
     RealmList<Movies> moviesRealmList = new RealmList<>();
 
     List<View> companyViewList = new ArrayList<>();
@@ -118,19 +118,19 @@ public class FragmentAddDetails extends Fragment {
 
         setupElements();
 
+        initialiseValues();
+
         addDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (formCheckValues()) {
                     return;
                 }
-                addToRealmObjectToDb();
+                addRealmObjectToDb();
                 mListener.refreshViews();
                 popFragment();
             }
         });
-
-        initialiseValues();
     }
 
     private void initialiseValues() {
@@ -152,14 +152,15 @@ public class FragmentAddDetails extends Fragment {
 
 
             if (person.getCompanies() != null && person.getCompanies().size() > 0) {
-                RealmList<Company> companey = person.getCompanies();
-                for (Company c : companey) {
+                RealmList<Company> company = person.getCompanies();
+                for (Company c : company) {
                     View view = inflateView(R.layout.card_companey_details, addDetailsLlayoutWork);
                     ((EditText) view.findViewById(R.id.company_name)).setText(c.getName());
                     ((EditText) view.findViewById(R.id.company_title)).setText(c.getTitle());
                     ((EditText) view.findViewById(R.id.company_salary)).setText(c.getSalary() + "");
                     ((EditText) view.findViewById(R.id.company_startDate)).setText(c.getStartingDate());
                     ((EditText) view.findViewById(R.id.company_endDate)).setText(c.getEndDate());
+
                     addDetailsLlayoutWork.addView(view);
                 }
             }
@@ -171,6 +172,9 @@ public class FragmentAddDetails extends Fragment {
                     ((EditText) view.findViewById(R.id.sN_fullName)).setText(s.getName());
                     ((EditText) view.findViewById(R.id.sN_socialLinks)).setText(s.getUrl());
                     ((EditText) view.findViewById(R.id.sN_image_url)).setText(s.getImageUrl());
+                    //TODO add feed and relationship status.
+
+                    addDetailsLlayoutSNworks.addView(view);
                 }
 
             }
@@ -184,9 +188,12 @@ public class FragmentAddDetails extends Fragment {
                     ((EditText) view.findViewById(R.id.movie_releaseYear)).setText(m.getStringReleaseDate());
                     if (m.getActorNames() != null && m.getActorNames().size() > 0) {
                         ((EditText) view.findViewById(R.id.movie_actor1)).setText(m.getActorNames().get(0).getString());
+                        StaticFunctions.logDotI(TAG, "Actor Name : " + m.getActorNames().get(0).getString());
                         if (m.getActorNames().size() > 1)
                             ((EditText) view.findViewById(R.id.movie_actor2)).setText(m.getActorNames().get(1).getString());
                     }
+
+                    addDetailsLlayoutMovies.addView(view);
                 }
             }
         }
@@ -214,16 +221,16 @@ public class FragmentAddDetails extends Fragment {
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         addDetailsSpinnerYear.setAdapter(yearAdapter);
 
-        List<String> relStatus = new ArrayList<>();
-        relStatus.add("Single");
-        relStatus.add("in a relationship.");
-        relStatus.add("looking to hookup");
-        relStatus.add("married");
-        relStatus.add("married,looking to hookup");
-        relStatus.add("call me");
-        relStatus.add("non of your business");
-        ArrayAdapter<String> relStatusAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, relStatus);
-        relStatusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        List<String> relStatus = new ArrayList<>();
+//        relStatus.add("Single");
+//        relStatus.add("in a relationship.");
+//        relStatus.add("looking to hookup");
+//        relStatus.add("married");
+//        relStatus.add("married,looking to hookup");
+//        relStatus.add("call me");
+//        relStatus.add("non of your business");
+//        ArrayAdapter<String> relStatusAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, relStatus);
+//        relStatusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        sNRstatusSpinner.setAdapter(relStatusAdapter);
 
         realm = Realm.getDefaultInstance();
@@ -231,7 +238,7 @@ public class FragmentAddDetails extends Fragment {
 
     }
 
-    private void addToRealmObjectToDb() {
+    private void addRealmObjectToDb() {
 
         realm.beginTransaction();
 
@@ -254,7 +261,7 @@ public class FragmentAddDetails extends Fragment {
 
         if (companyViewList.size() > 0) {
             for (View company : companyViewList) {
-                Company tempCompaney = realm.createObject(Company.class);
+                Company tempCompany = realm.createObject(Company.class);
 
                 EditText name = (EditText) company.findViewById(R.id.company_name);
                 EditText title = (EditText) company.findViewById(R.id.company_title);
@@ -262,12 +269,12 @@ public class FragmentAddDetails extends Fragment {
                 EditText endDate = (EditText) company.findViewById(R.id.company_endDate);
                 EditText salary = (EditText) company.findViewById(R.id.company_salary);
 
-                tempCompaney.setName(extractString(name));
-                tempCompaney.setTitle(extractString(title));
-                tempCompaney.setStartingDate(extractString(startingDate));
-                tempCompaney.setEndDate(extractString(endDate));
-                tempCompaney.setSalary(convertStingToInt(extractString(salary)));
-                companyRealmList.add(tempCompaney);
+                tempCompany.setName(extractString(name));
+                tempCompany.setTitle(extractString(title));
+                tempCompany.setStartingDate(extractString(startingDate));
+                tempCompany.setEndDate(extractString(endDate));
+                tempCompany.setSalary(convertStingToInt(extractString(salary)));
+                companyRealmList.add(tempCompany);
             }
             realmPersonObject.setCompanies(companyRealmList);
         }
@@ -279,18 +286,20 @@ public class FragmentAddDetails extends Fragment {
                 EditText name = (EditText) sN.findViewById(R.id.sN_fullName);
                 EditText url = (EditText) sN.findViewById(R.id.sN_socialLinks);
                 EditText imageUrl = (EditText) sN.findViewById(R.id.sN_image_url);
-                Spinner relStatus = (Spinner) sN.findViewById(R.id.sN_rstatus_spinner);
+//                Spinner relStatus = (Spinner) sN.findViewById(R.id.sN_rstatus_spinner);
 
                 socialNetwork.setName(extractString(name));
                 socialNetwork.setUrl(extractString(url));
                 socialNetwork.setImageUrl(extractString(imageUrl));
-                socialNetwork.setRelationshipStatusString(relStatus.getSelectedItem().toString());
-                if (relStatus.getSelectedItem().toString().toLowerCase().contains("single")) {
-                    socialNetwork.setRelationshipStatus(false);
-                } else socialNetwork.setRelationshipStatus(true);
-                socialNetworks.add(socialNetwork);
+
+                //TODO add relationship status to the realm object
+//                socialNetwork.setRelationshipStatusString(relStatus.getSelectedItem().toString());
+//                if (relStatus.getSelectedItem().toString().toLowerCase().contains("single")) {
+//                    socialNetwork.setRelationshipStatus(false);
+//                } else socialNetwork.setRelationshipStatus(true);
+                socialNetworkRealmList.add(socialNetwork);
             }
-            realmPersonObject.setSocialNetworks(socialNetworks);
+            realmPersonObject.setSocialNetworks(socialNetworkRealmList);
         }
 
         if (movieViewList.size() > 0) {
@@ -298,14 +307,14 @@ public class FragmentAddDetails extends Fragment {
                 Movies m = realm.createObject(Movies.class);
 
                 EditText name = (EditText) movie.findViewById(R.id.movie_name);
-                EditText releseYr = (EditText) movie.findViewById(R.id.movie_releaseYear);
+                EditText releaseYr = (EditText) movie.findViewById(R.id.movie_releaseYear);
                 EditText productionHouse = (EditText) movie.findViewById(R.id.movie_productionHouse);
                 EditText directorName = (EditText) movie.findViewById(R.id.movie_directorName);
                 EditText actor1 = (EditText) movie.findViewById(R.id.movie_actor1);
                 EditText actor2 = (EditText) movie.findViewById(R.id.movie_actor2);
 
                 m.setName(extractString(name));
-                m.setStringReleaseDate(extractString(releseYr));
+                m.setStringReleaseDate(extractString(releaseYr));
                 m.setProductionHouse(extractString(productionHouse));
                 m.setDirectorName(extractString(directorName));
                 RealmList<RealmString> actorList = new RealmList<>();
@@ -314,6 +323,10 @@ public class FragmentAddDetails extends Fragment {
                 actorList.add(string);
                 string.setString(extractString(actor2));
                 actorList.add(string);
+                m.setActorNames(actorList);
+
+                StaticFunctions.logDotI(TAG, "actor names\t" + actorList.get(0).getString() + "\nactor 2 : " + actorList.get(1).getString());
+
                 moviesRealmList.add(m);
             }
             realmPersonObject.setFavMovies(moviesRealmList);
